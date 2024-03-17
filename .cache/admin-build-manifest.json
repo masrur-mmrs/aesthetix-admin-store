@@ -28,6 +28,7 @@
   "options": {
     "outDir": "build",
     "path": "/app",
-    "backend": "/"
+    "backend": "/",
+    "deployment": true
   }
 }
