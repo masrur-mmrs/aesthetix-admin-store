@@ -1,38 +1,24 @@
-import type { MiddlewaresConfig } from "@medusajs/medusa"
-import type { 
-  MedusaNextFunction, 
-  MedusaRequest, 
+import type {
+  MiddlewaresConfig,
+  MedusaRequest,
   MedusaResponse,
-} from "@medusajs/medusa"
+  MedusaNextFunction,
+} from "@medusajs/medusa";
 
-const storeMiddleware = (
-  req: MedusaRequest, 
-  res: MedusaResponse, 
+async function logger(
+  req: MedusaRequest,
+  res: MedusaResponse,
   next: MedusaNextFunction
-) => {
-  // do something
-  next()
+) {
+  console.log("Request received");
+  next();
 }
-
-const customResource = (
-    req: MedusaRequest, 
-    res: MedusaResponse,
-    next: MedusaNextFunction) => {
-    req.scope.register({
-      customResource: {
-        resolve: () => "my custom resource",
-      },
-    })
-  
-    next()
-  }
-  
 
 export const config: MiddlewaresConfig = {
   routes: [
     {
-      matcher: "/store/*",
-      middlewares: [storeMiddleware],
+      matcher: "/store/custom",
+      middlewares: [logger],
     },
   ],
-}
+};
