@@ -91,9 +91,10 @@ const plugins = [
         resolve: "@medusajs/admin",
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
-            serve: false,
-            backend: "https://aesthetix-admin-store.vercel.app",
-            // other options...
+            autoRebuild: true,
+            develop: {
+                open: process.env.OPEN_BROWSER !== "false",
+            },
         },
     },
     {
