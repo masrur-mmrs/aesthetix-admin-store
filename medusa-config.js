@@ -139,6 +139,7 @@ const projectConfig = {
     store_cors: STORE_CORS,
     database_url: DATABASE_URL,
     admin_cors: ADMIN_CORS,
+    jobs_batch_size: 100,
     // Uncomment the following lines to enable REDIS
     redis_url: REDIS_URL,
     database_extra: process.env.NODE_ENV !== "development" ? {
