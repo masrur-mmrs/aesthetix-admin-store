@@ -91,7 +91,7 @@ const plugins = [
         resolve: "@medusajs/admin",
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
-            autoRebuild: true,
+            autoRebuild: false,
         }
     },
     {
@@ -138,6 +138,12 @@ const projectConfig = {
     jobs_batch_size: 100,
     // Uncomment the following lines to enable REDIS
     redis_url: REDIS_URL,
+    http_compression: {
+        enabled: true,
+        level: 6,
+        memLevel: 8,
+        threshold: 1024,
+    },
     database_extra: process.env.NODE_ENV !== "development" ? {
         ssl: {
             rejectUnauthorized: false,
