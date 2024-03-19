@@ -1,6 +1,11 @@
 import { IdempotencyKey, MedusaRequest, MedusaResponse } from "@medusajs/medusa";
 
 import { IdempotencyKeyService } from "@medusajs/medusa"
+import { Post } from "../../../models/post"
+import { EntityManager } from "typeorm";
+import PostRepository from "../../../repositories/post";
+import ProductRepository from "../../../repositories/product";
+
 
 export const POST = async (
   req: MedusaRequest, 
@@ -22,9 +27,28 @@ export const POST = async (
   // ...
 }
 
-export async function GET(
-  req: MedusaRequest,
+export const GET = async (
+  req: MedusaRequest, 
   res: MedusaResponse
-): Promise<void> {
-  res.sendStatus(200);
+) => {
+  const postRepository: typeof PostRepository = 
+    req.scope.resolve("postRepository")
+    
+  const productRepository: typeof ProductRepository = 
+    req.scope.resolve(
+      "productRepository"
+    )
+    
+  const manager: EntityManager = req.scope.resolve("manager")
+  const postRepo = manager.getRepository(Post)
+
+  const productRepo = manager.withRepository(
+    productRepository
+  )
+  productRepo.customFunction()
+
+  return res.json({
+    posts: await postRepo.find(),
+  })
 }
+
