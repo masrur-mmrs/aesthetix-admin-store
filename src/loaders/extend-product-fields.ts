@@ -6,4 +6,8 @@ export default async function () {
       ...imports.allowedStoreProductsFields,
       "customAttribute",
     ]
+    imports.defaultStoreProductsFields = [
+      ...imports.defaultStoreProductsFields,
+      "customAttribute",
+    ]
   }
