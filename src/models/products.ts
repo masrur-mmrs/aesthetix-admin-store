@@ -8,5 +8,5 @@ import {
 @Entity()
 export class Product extends MedusaProduct {
   @Column({nullable:true})
-  customAttribute?: string
+  customAttribute?: string | null
 }
