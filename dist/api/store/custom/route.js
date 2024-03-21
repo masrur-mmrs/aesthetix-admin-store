@@ -1,64 +1,26 @@
 "use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.POST = exports.GET = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _post = require("../../../models/post");
-var POST = exports.POST = /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var idempotencyKeyService, headerKey, idempotencyKey;
-    return _regenerator["default"].wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
-        case 0:
-          // ...
-          idempotencyKeyService = req.scope.resolve("idempotencyKeyService");
-          headerKey = req.get("Idempotency-Key") || "";
-          _context.next = 4;
-          return idempotencyKeyService.initializeRequest(headerKey, req.method, req.params, req.path);
-        case 4:
-          idempotencyKey = _context.sent;
-        case 5:
-        case "end":
-          return _context.stop();
-      }
-    }, _callee);
-  }));
-  return function POST(_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-var GET = exports.GET = /*#__PURE__*/function () {
-  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var postRepository, productRepository, manager, postRepo, productRepo;
-    return _regenerator["default"].wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
-        case 0:
-          postRepository = req.scope.resolve("postRepository");
-          productRepository = req.scope.resolve("productRepository");
-          manager = req.scope.resolve("manager");
-          postRepo = manager.getRepository(_post.Post);
-          productRepo = manager.withRepository(productRepository);
-          productRepo.customFunction();
-          _context2.t0 = res;
-          _context2.next = 9;
-          return postRepo.find();
-        case 9:
-          _context2.t1 = _context2.sent;
-          _context2.t2 = {
-            posts: _context2.t1
-          };
-          return _context2.abrupt("return", _context2.t0.json.call(_context2.t0, _context2.t2));
-        case 12:
-        case "end":
-          return _context2.stop();
-      }
-    }, _callee2);
-  }));
-  return function GET(_x3, _x4) {
-    return _ref2.apply(this, arguments);
-  };
-}();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GET = exports.POST = void 0;
+const post_1 = require("../../../models/post");
+const POST = async (req, res) => {
+    // ...
+    const idempotencyKeyService = req.scope.resolve("idempotencyKeyService");
+    const headerKey = req.get("Idempotency-Key") || "";
+    const idempotencyKey = await idempotencyKeyService
+        .initializeRequest(headerKey, req.method, req.params, req.path);
+    // ...
+};
+exports.POST = POST;
+const GET = async (req, res) => {
+    const postRepository = req.scope.resolve("postRepository");
+    const productRepository = req.scope.resolve("productRepository");
+    const manager = req.scope.resolve("manager");
+    const postRepo = manager.getRepository(post_1.Post);
+    const productRepo = manager.withRepository(productRepository);
+    productRepo.customFunction();
+    return res.json({
+        posts: await postRepo.find(),
+    });
+};
+exports.GET = GET;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicm91dGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9zcmMvYXBpL3N0b3JlL2N1c3RvbS9yb3V0ZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFHQSwrQ0FBMkM7QUFNcEMsTUFBTSxJQUFJLEdBQUcsS0FBSyxFQUN2QixHQUFrQixFQUNsQixHQUFtQixFQUNuQixFQUFFO0lBQ0YsTUFBTTtJQUNOLE1BQU0scUJBQXFCLEdBQUcsR0FBRyxDQUFDLEtBQUssQ0FBQyxPQUFPLENBRTdDLHVCQUF1QixDQUFDLENBQUE7SUFDMUIsTUFBTSxTQUFTLEdBQUcsR0FBRyxDQUFDLEdBQUcsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsQ0FBQTtJQUVsRCxNQUFNLGNBQWMsR0FBRyxNQUFNLHFCQUFxQjtTQUMvQyxpQkFBaUIsQ0FDaEIsU0FBUyxFQUNULEdBQUcsQ0FBQyxNQUFNLEVBQ1YsR0FBRyxDQUFDLE1BQU0sRUFDVixHQUFHLENBQUMsSUFBSSxDQUNULENBQUE7SUFDSCxNQUFNO0FBQ1IsQ0FBQyxDQUFBO0FBbEJZLFFBQUEsSUFBSSxRQWtCaEI7QUFFTSxNQUFNLEdBQUcsR0FBRyxLQUFLLEVBQ3RCLEdBQWtCLEVBQ2xCLEdBQW1CLEVBQ25CLEVBQUU7SUFDRixNQUFNLGNBQWMsR0FDbEIsR0FBRyxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUMsZ0JBQWdCLENBQUMsQ0FBQTtJQUVyQyxNQUFNLGlCQUFpQixHQUNyQixHQUFHLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FDZixtQkFBbUIsQ0FDcEIsQ0FBQTtJQUVILE1BQU0sT0FBTyxHQUFrQixHQUFHLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQyxTQUFTLENBQUMsQ0FBQTtJQUMzRCxNQUFNLFFBQVEsR0FBRyxPQUFPLENBQUMsYUFBYSxDQUFDLFdBQUksQ0FBQyxDQUFBO0lBRTVDLE1BQU0sV0FBVyxHQUFHLE9BQU8sQ0FBQyxjQUFjLENBQ3hDLGlCQUFpQixDQUNsQixDQUFBO0lBQ0QsV0FBVyxDQUFDLGNBQWMsRUFBRSxDQUFBO0lBRTVCLE9BQU8sR0FBRyxDQUFDLElBQUksQ0FBQztRQUNkLEtBQUssRUFBRSxNQUFNLFFBQVEsQ0FBQyxJQUFJLEVBQUU7S0FDN0IsQ0FBQyxDQUFBO0FBQ0osQ0FBQyxDQUFBO0FBdkJZLFFBQUEsR0FBRyxPQXVCZiJ9

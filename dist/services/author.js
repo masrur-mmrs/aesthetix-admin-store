@@ -1,267 +1,63 @@
 "use strict";
-
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-var _medusa = require("@medusajs/medusa");
-var _utils = require("@medusajs/utils");
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var AuthorService = /*#__PURE__*/function (_TransactionBaseServi) {
-  (0, _inherits2["default"])(AuthorService, _TransactionBaseServi);
-  var _super = _createSuper(AuthorService);
-  function AuthorService(container) {
-    var _this;
-    (0, _classCallCheck2["default"])(this, AuthorService);
-    _this = _super.call(this, container);
-    _this.authorRepository_ = container.authorRepository;
-    return _this;
-  }
-  (0, _createClass2["default"])(AuthorService, [{
-    key: "listAndCount",
-    value: function () {
-      var _listAndCount = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(selector) {
-        var config,
-          authorRepo,
-          query,
-          _args = arguments;
-        return _regenerator["default"].wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              config = _args.length > 1 && _args[1] !== undefined ? _args[1] : {
-                skip: 0,
-                take: 20,
-                relations: []
-              };
-              authorRepo = this.activeManager_.withRepository(this.authorRepository_);
-              query = (0, _medusa.buildQuery)(selector, config);
-              return _context.abrupt("return", authorRepo.findAndCount(query));
-            case 4:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, this);
-      }));
-      function listAndCount(_x) {
-        return _listAndCount.apply(this, arguments);
-      }
-      return listAndCount;
-    }()
-  }, {
-    key: "list",
-    value: function () {
-      var _list = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(selector) {
-        var config,
-          _yield$this$listAndCo,
-          _yield$this$listAndCo2,
-          authors,
-          _args2 = arguments;
-        return _regenerator["default"].wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              config = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {
-                skip: 0,
-                take: 20,
-                relations: []
-              };
-              _context2.next = 3;
-              return this.listAndCount(selector, config);
-            case 3:
-              _yield$this$listAndCo = _context2.sent;
-              _yield$this$listAndCo2 = (0, _slicedToArray2["default"])(_yield$this$listAndCo, 1);
-              authors = _yield$this$listAndCo2[0];
-              return _context2.abrupt("return", authors);
-            case 7:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, this);
-      }));
-      function list(_x2) {
-        return _list.apply(this, arguments);
-      }
-      return list;
-    }()
-  }, {
-    key: "retrieve",
-    value: function () {
-      var _retrieve = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(id, config) {
-        var authorRepo, query, author;
-        return _regenerator["default"].wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              authorRepo = this.activeManager_.withRepository(this.authorRepository_);
-              query = (0, _medusa.buildQuery)({
-                id: id
-              }, config);
-              _context3.next = 4;
-              return authorRepo.findOne(query);
-            case 4:
-              author = _context3.sent;
-              if (author) {
-                _context3.next = 7;
-                break;
-              }
-              throw new _utils.MedusaError(_utils.MedusaError.Types.NOT_FOUND, "Author was not found");
-            case 7:
-              return _context3.abrupt("return");
-            case 8:
-            case "end":
-              return _context3.stop();
-          }
-        }, _callee3, this);
-      }));
-      function retrieve(_x3, _x4) {
-        return _retrieve.apply(this, arguments);
-      }
-      return retrieve;
-    }()
-  }, {
-    key: "create",
-    value: function () {
-      var _create = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(data) {
-        var _this2 = this;
-        return _regenerator["default"].wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
-            case 0:
-              return _context5.abrupt("return", this.atomicPhase_( /*#__PURE__*/function () {
-                var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(manager) {
-                  var authorRepo, post, result;
-                  return _regenerator["default"].wrap(function _callee4$(_context4) {
-                    while (1) switch (_context4.prev = _context4.next) {
-                      case 0:
-                        authorRepo = manager.withRepository(_this2.authorRepository_);
-                        post = authorRepo.create(data);
-                        _context4.next = 4;
-                        return authorRepo.save(post);
-                      case 4:
-                        result = _context4.sent;
-                        return _context4.abrupt("return", result);
-                      case 6:
-                      case "end":
-                        return _context4.stop();
-                    }
-                  }, _callee4);
-                }));
-                return function (_x6) {
-                  return _ref.apply(this, arguments);
-                };
-              }()));
-            case 1:
-            case "end":
-              return _context5.stop();
-          }
-        }, _callee5, this);
-      }));
-      function create(_x5) {
-        return _create.apply(this, arguments);
-      }
-      return create;
-    }()
-  }, {
-    key: "update",
-    value: function () {
-      var _update = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(id, data) {
-        var _this3 = this;
-        return _regenerator["default"].wrap(function _callee7$(_context7) {
-          while (1) switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.next = 2;
-              return this.atomicPhase_( /*#__PURE__*/function () {
-                var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(manager) {
-                  var authorRepo, post;
-                  return _regenerator["default"].wrap(function _callee6$(_context6) {
-                    while (1) switch (_context6.prev = _context6.next) {
-                      case 0:
-                        authorRepo = manager.withRepository(_this3.authorRepository_);
-                        _context6.next = 3;
-                        return _this3.retrieve(id);
-                      case 3:
-                        post = _context6.sent;
-                        Object.assign(post, data);
-                        _context6.next = 7;
-                        return authorRepo.save(post);
-                      case 7:
-                        return _context6.abrupt("return", _context6.sent);
-                      case 8:
-                      case "end":
-                        return _context6.stop();
-                    }
-                  }, _callee6);
-                }));
-                return function (_x9) {
-                  return _ref2.apply(this, arguments);
-                };
-              }());
-            case 2:
-              return _context7.abrupt("return", _context7.sent);
-            case 3:
-            case "end":
-              return _context7.stop();
-          }
-        }, _callee7, this);
-      }));
-      function update(_x7, _x8) {
-        return _update.apply(this, arguments);
-      }
-      return update;
-    }()
-  }, {
-    key: "delete",
-    value: function () {
-      var _delete2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(id) {
-        var _this4 = this;
-        return _regenerator["default"].wrap(function _callee9$(_context9) {
-          while (1) switch (_context9.prev = _context9.next) {
-            case 0:
-              _context9.next = 2;
-              return this.atomicPhase_( /*#__PURE__*/function () {
-                var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(manager) {
-                  var authorRepo, post;
-                  return _regenerator["default"].wrap(function _callee8$(_context8) {
-                    while (1) switch (_context8.prev = _context8.next) {
-                      case 0:
-                        authorRepo = manager.withRepository(_this4.authorRepository_);
-                        _context8.next = 3;
-                        return _this4.retrieve(id);
-                      case 3:
-                        post = _context8.sent;
-                        _context8.next = 6;
-                        return authorRepo.remove([post]);
-                      case 6:
-                      case "end":
-                        return _context8.stop();
-                    }
-                  }, _callee8);
-                }));
-                return function (_x11) {
-                  return _ref3.apply(this, arguments);
-                };
-              }());
-            case 2:
-              return _context9.abrupt("return", _context9.sent);
-            case 3:
-            case "end":
-              return _context9.stop();
-          }
-        }, _callee9, this);
-      }));
-      function _delete(_x10) {
-        return _delete2.apply(this, arguments);
-      }
-      return _delete;
-    }()
-  }]);
-  return AuthorService;
-}(_medusa.TransactionBaseService);
-var _default = exports["default"] = AuthorService;
+Object.defineProperty(exports, "__esModule", { value: true });
+const medusa_1 = require("@medusajs/medusa");
+const utils_1 = require("@medusajs/utils");
+class AuthorService extends medusa_1.TransactionBaseService {
+    constructor(container) {
+        super(container);
+        this.authorRepository_ = container.authorRepository;
+    }
+    async listAndCount(selector, config = {
+        skip: 0,
+        take: 20,
+        relations: [],
+    }) {
+        const authorRepo = this.activeManager_.withRepository(this.authorRepository_);
+        const query = (0, medusa_1.buildQuery)(selector, config);
+        return authorRepo.findAndCount(query);
+    }
+    async list(selector, config = {
+        skip: 0,
+        take: 20,
+        relations: [],
+    }) {
+        const [authors] = await this.listAndCount(selector, config);
+        return authors;
+    }
+    async retrieve(id, config) {
+        const authorRepo = this.activeManager_.withRepository(this.authorRepository_);
+        const query = (0, medusa_1.buildQuery)({
+            id,
+        }, config);
+        const author = await authorRepo.findOne(query);
+        if (!author) {
+            throw new utils_1.MedusaError(utils_1.MedusaError.Types.NOT_FOUND, "Author was not found");
+        }
+        return;
+    }
+    async create(data) {
+        return this.atomicPhase_(async (manager) => {
+            const authorRepo = manager.withRepository(this.authorRepository_);
+            const post = authorRepo.create(data);
+            const result = await authorRepo.save(post);
+            return result;
+        });
+    }
+    async update(id, data) {
+        return await this.atomicPhase_(async (manager) => {
+            const authorRepo = manager.withRepository(this.authorRepository_);
+            const post = await this.retrieve(id);
+            Object.assign(post, data);
+            return await authorRepo.save(post);
+        });
+    }
+    async delete(id) {
+        return await this.atomicPhase_(async (manager) => {
+            const authorRepo = manager.withRepository(this.authorRepository_);
+            const post = await this.retrieve(id);
+            await authorRepo.remove([post]);
+        });
+    }
+}
+exports.default = AuthorService;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXV0aG9yLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL3NlcnZpY2VzL2F1dGhvci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUsyQjtBQUl6QiwyQ0FBNkM7QUFFN0MsTUFBTSxhQUFjLFNBQVEsK0JBQXNCO0lBS2hELFlBQVksU0FBUztRQUNuQixLQUFLLENBQUMsU0FBUyxDQUFDLENBQUE7UUFDaEIsSUFBSSxDQUFDLGlCQUFpQixHQUFHLFNBQVMsQ0FBQyxnQkFBZ0IsQ0FBQTtJQUNyRCxDQUFDO0lBRUQsS0FBSyxDQUFDLFlBQVksQ0FDaEIsUUFBMkIsRUFDM0IsU0FBNkI7UUFDM0IsSUFBSSxFQUFFLENBQUM7UUFDUCxJQUFJLEVBQUUsRUFBRTtRQUNSLFNBQVMsRUFBRSxFQUFFO0tBQ2hCO1FBQ0MsTUFBTSxVQUFVLEdBQUcsSUFBSSxDQUFDLGNBQWMsQ0FBQyxjQUFjLENBQ25ELElBQUksQ0FBQyxpQkFBaUIsQ0FDdkIsQ0FBQTtRQUVELE1BQU0sS0FBSyxHQUFHLElBQUEsbUJBQVUsRUFBQyxRQUFRLEVBQUUsTUFBTSxDQUFDLENBQUE7UUFFMUMsT0FBTyxVQUFVLENBQUMsWUFBWSxDQUFDLEtBQUssQ0FBQyxDQUFBO0lBQ3ZDLENBQUM7SUFFRCxLQUFLLENBQUMsSUFBSSxDQUNSLFFBQTJCLEVBQzNCLFNBQTZCO1FBQzNCLElBQUksRUFBRSxDQUFDO1FBQ1AsSUFBSSxFQUFFLEVBQUU7UUFDUixTQUFTLEVBQUUsRUFBRTtLQUNoQjtRQUNDLE1BQU0sQ0FBQyxPQUFPLENBQUMsR0FBRyxNQUFNLElBQUksQ0FBQyxZQUFZLENBQUMsUUFBUSxFQUFFLE1BQU0sQ0FBQyxDQUFBO1FBRTNELE9BQU8sT0FBTyxDQUFBO0lBQ2hCLENBQUM7SUFFRCxLQUFLLENBQUMsUUFBUSxDQUNaLEVBQVUsRUFDVixNQUEyQjtRQUUzQixNQUFNLFVBQVUsR0FBRyxJQUFJLENBQUMsY0FBYyxDQUFDLGNBQWMsQ0FDbkQsSUFBSSxDQUFDLGlCQUFpQixDQUN2QixDQUFBO1FBRUQsTUFBTSxLQUFLLEdBQUcsSUFBQSxtQkFBVSxFQUFDO1lBQ3ZCLEVBQUU7U0FDSCxFQUFFLE1BQU0sQ0FBQyxDQUFBO1FBRVYsTUFBTSxNQUFNLEdBQUcsTUFBTSxVQUFVLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxDQUFBO1FBRTlDLElBQUksQ0FBQyxNQUFNLEVBQUU7WUFDWCxNQUFNLElBQUksbUJBQVcsQ0FDbkIsbUJBQVcsQ0FBQyxLQUFLLENBQUMsU0FBUyxFQUMzQixzQkFBc0IsQ0FDdkIsQ0FBQTtTQUNGO1FBRUQsT0FBTTtJQUNSLENBQUM7SUFFRCxLQUFLLENBQUMsTUFBTSxDQUNWLElBQW9DO1FBRXBDLE9BQU8sSUFBSSxDQUFDLFlBQVksQ0FBQyxLQUFLLEVBQUUsT0FBTyxFQUFFLEVBQUU7WUFDekMsTUFBTSxVQUFVLEdBQUcsT0FBTyxDQUFDLGNBQWMsQ0FDdkMsSUFBSSxDQUFDLGlCQUFpQixDQUN2QixDQUFBO1lBQ0QsTUFBTSxJQUFJLEdBQUcsVUFBVSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQTtZQUNwQyxNQUFNLE1BQU0sR0FBRyxNQUFNLFVBQVUsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUE7WUFFMUMsT0FBTyxNQUFNLENBQUE7UUFDZixDQUFDLENBQUMsQ0FBQTtJQUNKLENBQUM7SUFFRCxLQUFLLENBQUMsTUFBTSxDQUNWLEVBQVUsRUFDVixJQUFpQztRQUVqQyxPQUFPLE1BQU0sSUFBSSxDQUFDLFlBQVksQ0FBQyxLQUFLLEVBQUUsT0FBTyxFQUFFLEVBQUU7WUFDL0MsTUFBTSxVQUFVLEdBQUcsT0FBTyxDQUFDLGNBQWMsQ0FDdkMsSUFBSSxDQUFDLGlCQUFpQixDQUN2QixDQUFBO1lBQ0QsTUFBTSxJQUFJLEdBQUcsTUFBTSxJQUFJLENBQUMsUUFBUSxDQUFDLEVBQUUsQ0FBQyxDQUFBO1lBRXBDLE1BQU0sQ0FBQyxNQUFNLENBQUMsSUFBSSxFQUFFLElBQUksQ0FBQyxDQUFBO1lBRXpCLE9BQU8sTUFBTSxVQUFVLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFBO1FBQ3BDLENBQUMsQ0FBQyxDQUFBO0lBQ0osQ0FBQztJQUVELEtBQUssQ0FBQyxNQUFNLENBQUMsRUFBVTtRQUNyQixPQUFPLE1BQU0sSUFBSSxDQUFDLFlBQVksQ0FBQyxLQUFLLEVBQUUsT0FBTyxFQUFFLEVBQUU7WUFDL0MsTUFBTSxVQUFVLEdBQUcsT0FBTyxDQUFDLGNBQWMsQ0FDdkMsSUFBSSxDQUFDLGlCQUFpQixDQUN2QixDQUFBO1lBQ0QsTUFBTSxJQUFJLEdBQUcsTUFBTSxJQUFJLENBQUMsUUFBUSxDQUFDLEVBQUUsQ0FBQyxDQUFBO1lBRXBDLE1BQU0sVUFBVSxDQUFDLE1BQU0sQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUE7UUFDakMsQ0FBQyxDQUFDLENBQUE7SUFDSixDQUFDO0NBQ0Y7QUFFRCxrQkFBZSxhQUFhLENBQUEifQ==
