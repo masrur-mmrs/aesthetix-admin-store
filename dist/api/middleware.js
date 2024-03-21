@@ -1,50 +1,78 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.config = void 0;
-const registerLoggedInUser = async (req, res, next) => {
-    let loggedInUser = null;
-    if (req.user && req.user.userId) {
-        const userService = req.scope.resolve("userService");
-        loggedInUser = await userService.retrieve(req.user.userId);
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+var registerLoggedInUser = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res, next) {
+    var loggedInUser, userService;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          loggedInUser = null;
+          if (!(req.user && req.user.userId)) {
+            _context.next = 6;
+            break;
+          }
+          userService = req.scope.resolve("userService");
+          _context.next = 5;
+          return userService.retrieve(req.user.userId);
+        case 5:
+          loggedInUser = _context.sent;
+        case 6:
+          req.scope.register({
+            loggedInUser: {
+              resolve: function resolve() {
+                return loggedInUser;
+              }
+            }
+          });
+          next();
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return function registerLoggedInUser(_x, _x2, _x3) {
+    return _ref.apply(this, arguments);
+  };
+}();
+var storeMiddleware = function storeMiddleware(req, res, next) {
+  // do something
+
+  req.scope.register({
+    storeMiddleware: {
+      resolve: function resolve() {
+        return res.send("Store Middleware");
+      }
     }
-    req.scope.register({
-        loggedInUser: {
-            resolve: () => loggedInUser,
-        },
-    });
-    next();
+  });
+  next();
 };
-const storeMiddleware = (req, res, next) => {
-    // do something
-    req.scope.register({
-        storeMiddleware: {
-            resolve: () => res.send("Store Middleware")
-        },
-    });
-    next();
+var customResource = function customResource(req, res, next) {
+  req.scope.register({
+    customResource: {
+      resolve: function resolve() {
+        return res.send("Custom Resource");
+      }
+    }
+  });
+  next();
 };
-const customResource = (req, res, next) => {
-    req.scope.register({
-        customResource: {
-            resolve: () => res.send("Custom Resource"),
-        },
-    });
-    next();
+var config = exports.config = {
+  routes: [{
+    matcher: "/admin/products",
+    middlewares: [registerLoggedInUser]
+  }, {
+    matcher: "/app",
+    middlewares: [registerLoggedInUser]
+  }, {
+    matcher: "/store/*",
+    middlewares: [storeMiddleware, customResource]
+  }]
 };
-exports.config = {
-    routes: [
-        {
-            matcher: "/admin/products",
-            middlewares: [registerLoggedInUser],
-        },
-        {
-            matcher: "/app",
-            middlewares: [registerLoggedInUser],
-        },
-        {
-            matcher: "/store/*",
-            middlewares: [storeMiddleware, customResource],
-        },
-    ],
-};
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWlkZGxld2FyZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9hcGkvbWlkZGxld2FyZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFXQSxNQUFNLG9CQUFvQixHQUFHLEtBQUssRUFDaEMsR0FBa0IsRUFDbEIsR0FBbUIsRUFDbkIsSUFBd0IsRUFDeEIsRUFBRTtJQUNGLElBQUksWUFBWSxHQUFnQixJQUFJLENBQUE7SUFFcEMsSUFBSSxHQUFHLENBQUMsSUFBSSxJQUFJLEdBQUcsQ0FBQyxJQUFJLENBQUMsTUFBTSxFQUFFO1FBQy9CLE1BQU0sV0FBVyxHQUNmLEdBQUcsQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLGFBQWEsQ0FBZ0IsQ0FBQTtRQUNqRCxZQUFZLEdBQUcsTUFBTSxXQUFXLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUE7S0FDM0Q7SUFHRCxHQUFHLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQztRQUNqQixZQUFZLEVBQUU7WUFDWixPQUFPLEVBQUUsR0FBRyxFQUFFLENBQUMsWUFBWTtTQUMzQjtLQUNGLENBQUMsQ0FBQTtJQUVILElBQUksRUFBRSxDQUFBO0FBQ1IsQ0FBQyxDQUFBO0FBRUQsTUFBTSxlQUFlLEdBQUcsQ0FDdEIsR0FBa0IsRUFDbEIsR0FBbUIsRUFDbkIsSUFBd0IsRUFDeEIsRUFBRTtJQUNGLGVBQWU7SUFFZixHQUFHLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQztRQUNqQixlQUFlLEVBQUU7WUFDZixPQUFPLEVBQUUsR0FBRyxFQUFFLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxrQkFBa0IsQ0FBQztTQUM1QztLQUNGLENBQUMsQ0FBQTtJQUdGLElBQUksRUFBRSxDQUFBO0FBRVIsQ0FBQyxDQUFBO0FBRUQsTUFBTSxjQUFjLEdBQUcsQ0FDckIsR0FBa0IsRUFDbEIsR0FBbUIsRUFDbkIsSUFBd0IsRUFBRSxFQUFFO0lBRTVCLEdBQUcsQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDO1FBQ2pCLGNBQWMsRUFBRTtZQUNkLE9BQU8sRUFBRSxHQUFHLEVBQUUsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLGlCQUFpQixDQUFDO1NBQzNDO0tBQ0YsQ0FBQyxDQUFBO0lBRUYsSUFBSSxFQUFFLENBQUE7QUFDTixDQUFDLENBQUE7QUFFVSxRQUFBLE1BQU0sR0FBc0I7SUFDdkMsTUFBTSxFQUFFO1FBQ047WUFDRSxPQUFPLEVBQUUsaUJBQWlCO1lBQzFCLFdBQVcsRUFBRSxDQUFDLG9CQUFvQixDQUFDO1NBQ3BDO1FBQ0Q7WUFDRSxPQUFPLEVBQUUsTUFBTTtZQUNmLFdBQVcsRUFBRSxDQUFDLG9CQUFvQixDQUFDO1NBQ3BDO1FBQ0Q7WUFDRSxPQUFPLEVBQUUsVUFBVTtZQUNuQixXQUFXLEVBQUUsQ0FBQyxlQUFlLEVBQUUsY0FBYyxDQUFDO1NBQy9DO0tBQ0Y7Q0FDRixDQUFBIn0=

@@ -1,38 +1,38 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-async function default_1() {
-    const imports = (await Promise.resolve().then(() => __importStar(require("@medusajs/medusa/dist/api/routes/store/products/index"))));
-    imports.allowedStoreProductsFields = [
-        ...imports.allowedStoreProductsFields,
-        "customAttribute",
-    ];
-    imports.defaultStoreProductsFields = [
-        ...imports.defaultStoreProductsFields,
-        "customAttribute",
-    ];
+exports["default"] = _default;
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != (0, _typeof2["default"])(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _default() {
+  return _ref.apply(this, arguments);
 }
-exports.default = default_1;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXh0ZW5kLXByb2R1Y3QtZmllbGRzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2xvYWRlcnMvZXh0ZW5kLXByb2R1Y3QtZmllbGRzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBZSxLQUFLO0lBQ2hCLE1BQU0sT0FBTyxHQUFHLENBQUMsd0RBQ2YsdURBQXVELEdBQ3hELENBQVEsQ0FBQTtJQUNULE9BQU8sQ0FBQywwQkFBMEIsR0FBRztRQUNuQyxHQUFHLE9BQU8sQ0FBQywwQkFBMEI7UUFDckMsaUJBQWlCO0tBQ2xCLENBQUE7SUFDRCxPQUFPLENBQUMsMEJBQTBCLEdBQUc7UUFDbkMsR0FBRyxPQUFPLENBQUMsMEJBQTBCO1FBQ3JDLGlCQUFpQjtLQUNsQixDQUFBO0FBQ0gsQ0FBQztBQVpILDRCQVlHIn0=
+function _ref() {
+  _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+    var imports;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return Promise.resolve().then(function () {
+            return _interopRequireWildcard(require("@medusajs/medusa/dist/api/routes/store/products/index"));
+          });
+        case 2:
+          imports = _context.sent;
+          imports.allowedStoreProductsFields = [].concat((0, _toConsumableArray2["default"])(imports.allowedStoreProductsFields), ["customAttribute"]);
+          imports.defaultStoreProductsFields = [].concat((0, _toConsumableArray2["default"])(imports.defaultStoreProductsFields), ["customAttribute"]);
+        case 5:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _ref.apply(this, arguments);
+}

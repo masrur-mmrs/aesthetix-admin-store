@@ -1,25 +1,26 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductRepository = void 0;
-const medusa_1 = require("@medusajs/medusa");
-const database_1 = require("@medusajs/medusa/dist/loaders/database");
-const product_1 = require("@medusajs/medusa/dist/repositories/product");
-exports.ProductRepository = database_1.dataSource
-    .getRepository(medusa_1.Product)
-    .extend({
-    // it is important to spread the existing repository here.
-    //  Otherwise you will end up losing core properties
-    ...Object.assign(product_1.ProductRepository, {
-        target: medusa_1.Product,
-    }),
-    /**
-     * Here you can create your custom function
-     * For example
-     */
-    customFunction() {
-        // TODO add custom implementation
-        return;
-    },
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-exports.default = exports.ProductRepository;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvZHVjdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9yZXBvc2l0b3JpZXMvcHJvZHVjdC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSw2Q0FBMEM7QUFDMUMscUVBRStDO0FBQy9DLHdFQUdtRDtBQUV0QyxRQUFBLGlCQUFpQixHQUFHLHFCQUFVO0tBQ3hDLGFBQWEsQ0FBQyxnQkFBTyxDQUFDO0tBQ3RCLE1BQU0sQ0FBQztJQUNOLDBEQUEwRDtJQUMxRCxvREFBb0Q7SUFDcEQsR0FBRyxNQUFNLENBQUMsTUFBTSxDQUFDLDJCQUF1QixFQUFFO1FBQ3hDLE1BQU0sRUFBRSxnQkFBTztLQUNoQixDQUFDO0lBRUY7OztPQUdHO0lBQ0gsY0FBYztRQUNaLGlDQUFpQztRQUNqQyxPQUFNO0lBQ1IsQ0FBQztDQUNGLENBQUMsQ0FBQTtBQUVKLGtCQUFlLHlCQUFpQixDQUFBIn0=
+exports["default"] = exports.ProductRepository = void 0;
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+var _medusa = require("@medusajs/medusa");
+var _database = require("@medusajs/medusa/dist/loaders/database");
+var _product = require("@medusajs/medusa/dist/repositories/product");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2["default"])(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+var ProductRepository = exports.ProductRepository = _database.dataSource.getRepository(_medusa.Product).extend(_objectSpread(_objectSpread({}, Object.assign(_product.ProductRepository, {
+  target: _medusa.Product
+})), {}, {
+  /**
+   * Here you can create your custom function
+   * For example
+   */
+  customFunction: function customFunction() {
+    // TODO add custom implementation
+    return;
+  }
+}));
+var _default = exports["default"] = ProductRepository;
