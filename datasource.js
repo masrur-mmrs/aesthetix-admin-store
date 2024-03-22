@@ -3,11 +3,11 @@ const { DataSource } = require("typeorm")
 const AppDataSource = new DataSource({
     type: "postgres",
     url: process.env.DATABASE_URL,
-    port: 5432,
-    username: "default",
-    password: "p4ZhIEow3HDt",
-    host: "ep-proud-wave-a43g4k4h-pooler.us-east-1.aws.neon.tech",
-    database: "verceldb",
+    port: process.env.PGPORT,
+    username: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
     entities: [
         "dist/models/*.js",
     ],

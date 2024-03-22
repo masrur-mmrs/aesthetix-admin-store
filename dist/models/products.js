@@ -15,11 +15,11 @@ const medusa_1 = require("@medusajs/medusa");
 let Product = class Product extends medusa_1.Product {
 };
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, name: "customattributes" }),
     __metadata("design:type", String)
 ], Product.prototype, "customAttribute", void 0);
 Product = __decorate([
     (0, typeorm_1.Entity)()
 ], Product);
 exports.Product = Product;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvZHVjdHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvbW9kZWxzL3Byb2R1Y3RzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztBQUFBLHFDQUF3QztBQUN4Qyw2Q0FHeUI7QUFHbEIsSUFBTSxPQUFPLEdBQWIsTUFBTSxPQUFRLFNBQVEsZ0JBQWE7Q0FHekMsQ0FBQTtBQUZDO0lBQUMsSUFBQSxnQkFBTSxFQUFDLEVBQUMsUUFBUSxFQUFDLElBQUksRUFBQyxDQUFDOztnREFDTztBQUZwQixPQUFPO0lBRG5CLElBQUEsZ0JBQU0sR0FBRTtHQUNJLE9BQU8sQ0FHbkI7QUFIWSwwQkFBTyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvZHVjdHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvbW9kZWxzL3Byb2R1Y3RzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztBQUFBLHFDQUF3QztBQUN4Qyw2Q0FHeUI7QUFHbEIsSUFBTSxPQUFPLEdBQWIsTUFBTSxPQUFRLFNBQVEsZ0JBQWE7Q0FHekMsQ0FBQTtBQUZDO0lBQUMsSUFBQSxnQkFBTSxFQUFDLEVBQUMsUUFBUSxFQUFDLElBQUksRUFBRSxJQUFJLEVBQUUsa0JBQWtCLEVBQUMsQ0FBQzs7Z0RBQ25CO0FBRnBCLE9BQU87SUFEbkIsSUFBQSxnQkFBTSxHQUFFO0dBQ0ksT0FBTyxDQUduQjtBQUhZLDBCQUFPIn0=
