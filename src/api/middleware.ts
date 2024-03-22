@@ -1,7 +1,8 @@
-import type { 
-  MiddlewaresConfig, 
-  User, 
-  UserService,
+import { 
+  authenticate,
+  type MiddlewaresConfig, 
+  type User, 
+  type UserService,
 } from "@medusajs/medusa"
 import type { 
   MedusaNextFunction, 
@@ -68,7 +69,7 @@ export const config: MiddlewaresConfig = {
   routes: [
     {
       matcher: "/admin/products",
-      middlewares: [registerLoggedInUser],
+      middlewares: [authenticate(), registerLoggedInUser],
     },
     {
       matcher: "/app",

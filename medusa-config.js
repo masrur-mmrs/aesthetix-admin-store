@@ -91,7 +91,7 @@ const plugins = [
         resolve: "@medusajs/admin",
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
-            autoRebuild: false,
+            serve: process.env.NODE_ENV === "development",
         }
     },
     {
