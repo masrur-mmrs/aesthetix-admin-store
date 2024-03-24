@@ -1,7 +1,6 @@
 import { Region } from "@medusajs/medusa";
-import { PriceType } from "@medusajs/medusa";
 import type Medusa from "@medusajs/medusa-js"
-import { ShippingOption } from "@medusajs/medusa";
+
 
 export default async function prepareShippingOptions (client: Medusa, region: Region) {
   let { shipping_options } = await client.admin.shippingOptions.list()

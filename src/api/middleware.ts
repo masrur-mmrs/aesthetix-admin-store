@@ -73,7 +73,7 @@ export const config: MiddlewaresConfig = {
     },
     {
       matcher: "/app",
-      middlewares: [registerLoggedInUser],
+      middlewares: [authenticate()],
     },
     {
       matcher: "/store/*",

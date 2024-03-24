@@ -20,17 +20,16 @@
     "medusa-plugin-algolia": "^0.2.20",
     "medusa-plugin-meilisearch": "^2.0.10",
     "medusa-plugin-sendgrid": "^1.3.12",
-    "medusa-react": "^9.0.15",
+    "medusa-react": "^9.0.16",
     "prism-react-renderer": "^2.0.4",
     "stripe": "^14.20.0",
     "typeorm": "^0.3.16"
   },
-  "modifiedAt": 1710095021209.4255,
+  "modifiedAt": 1711313839383.9917,
   "plugins": [],
   "options": {
-    "outDir": "build",
-    "path": "/app",
     "backend": "/",
-    "deployment": true
+    "path": "/app",
+    "outDir": "build"
   }
 }

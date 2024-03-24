@@ -51,3 +51,5 @@ export const GET = async (
     posts: await postRepo.find(),
   })
 }
+
+export const AUTHENTICATE = true

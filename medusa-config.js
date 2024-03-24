@@ -91,7 +91,7 @@ const plugins = [
         resolve: "@medusajs/admin",
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
-            // autoRebuild: false,
+            autoRebuild: false,
             path: "/app",
             // serve: process.env.NODE_ENV === "development",
         }
@@ -110,6 +110,7 @@ const plugins = [
 const featureFlags = {
     product_categories: true,
     order_editing: true,
+    // tax_inclusive_pricing: true,
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["modules"]} */
@@ -146,11 +147,11 @@ const projectConfig = {
         memLevel: 8,
         threshold: 1024,
     },
-    database_extra: process.env.NODE_ENV !== "development" ? {
-        ssl: {
-            rejectUnauthorized: false,
-        },
-    } : {},
+    // database_extra: process.env.NODE_ENV !== "development" ? {
+    //     ssl: {
+    //         rejectUnauthorized: false,
+    //     },
+    // } : {},
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
