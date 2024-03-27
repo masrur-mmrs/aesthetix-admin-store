@@ -92,7 +92,7 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             autoRebuild: false,
-            path: "/app",
+            // path: "/app",
             // serve: process.env.NODE_ENV === "development",
         }
     },
