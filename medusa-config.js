@@ -37,6 +37,8 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const BACKEND_URL = process.env.BACKEND_URL
 
+const WORKER_MODE = process.env.MEDUSA_WORKER_MODE
+
 const STRIPE_API_KEY = process.env.STRIPE_API_KEY;
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -142,7 +144,7 @@ const projectConfig = {
     database_url: DATABASE_URL,
     admin_cors: ADMIN_CORS,
     jobs_batch_size: 100,
-    worker_mode: process.env.MEDUSA_WORKER_MODE,
+    worker_mode: WORKER_MODE,
     // Uncomment the following lines to enable REDIS
     redis_url: REDIS_URL,
     http_compression: {
