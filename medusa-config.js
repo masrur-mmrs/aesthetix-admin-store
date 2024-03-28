@@ -35,6 +35,8 @@ const DATABASE_URL =
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
+const BACKEND_URL = process.env.BACKEND_URL
+
 const STRIPE_API_KEY = process.env.STRIPE_API_KEY;
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -52,6 +54,7 @@ const plugins = [
         resolve: `@medusajs/file-local`,
         options: {
             upload_dir: "uploads",
+            backend_url: BACKEND_URL,
         },
     },
     {
@@ -92,7 +95,7 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             autoRebuild: false,
-            // path: "/app",
+            path: "/app",
             // serve: process.env.NODE_ENV === "development",
         }
     },
