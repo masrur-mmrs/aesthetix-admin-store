@@ -25,12 +25,11 @@
     "stripe": "^14.20.0",
     "typeorm": "^0.3.16"
   },
-  "modifiedAt": 1711313839383.9917,
+  "modifiedAt": 1711817776067.1416,
   "plugins": [],
   "options": {
-    "outDir": "build",
-    "path": "/app",
     "backend": "/",
-    "deployment": true
+    "path": "/app",
+    "outDir": "build"
   }
 }
