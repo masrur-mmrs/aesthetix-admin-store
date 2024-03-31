@@ -37,6 +37,8 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const BACKEND_URL = process.env.BACKEND_URL
 
+const UPLOAD_DIR = process.env.UPLOAD_DIR
+
 const WORKER_MODE = process.env.MEDUSA_WORKER_MODE
 
 const STRIPE_API_KEY = process.env.STRIPE_API_KEY;
@@ -55,7 +57,7 @@ const plugins = [
     {
         resolve: `@medusajs/file-local`,
         options: {
-            upload_dir: "uploads",
+            upload_dir: UPLOAD_DIR,
             backend_url: BACKEND_URL,
         },
     },
