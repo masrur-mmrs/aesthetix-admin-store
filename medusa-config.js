@@ -63,6 +63,13 @@ const plugins = [
         },
     },
     {
+        resolve: "@medusajs/admin",
+        /** @type {import('@medusajs/admin').PluginOptions} */
+        options: {
+            autoRebuild: false,
+        }
+    },
+    {
         resolve: `medusa-plugin-algolia`,
         options: {
             applicationId: process.env.ALGOLIA_APP_ID,
@@ -93,16 +100,6 @@ const plugins = [
                 },
             },
         },
-    },
-
-    {
-        resolve: "@medusajs/admin",
-        /** @type {import('@medusajs/admin').PluginOptions} */
-        options: {
-            autoRebuild: false,
-            outDir: "build",
-            backend: BACKEND_URL,
-        }
     },
     {
         resolve: `medusa-plugin-sendgrid`,
@@ -155,11 +152,11 @@ const projectConfig = {
         memLevel: 8,
         threshold: 1024,
     },
-    // database_extra: process.env.NODE_ENV !== "development" ? {
-    //     ssl: {
-    //         rejectUnauthorized: false,
-    //     },
-    // } : {},
+    database_extra: process.env.NODE_ENV !== "development" ? {
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    } : {},
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
