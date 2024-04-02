@@ -75,7 +75,7 @@ const plugins = [
                             "description",
                             "handle",
                             "thumbnail",
-                            "variants",
+                            // "variants",
                             "variant_sku",
                             "options",
                             "collection_title",
@@ -98,7 +98,6 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             autoRebuild: false,
-            path: "/app",
         }
     },
     {

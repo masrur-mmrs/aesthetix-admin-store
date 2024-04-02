@@ -18,6 +18,10 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
 
             app.use(express.static(path.join(__dirname, 'build')));
 
+            app.get('*', (req, res) => {
+                res.sendFile(path.join(__dirname, 'build', 'index.html'));
+            });
+
             const server = GracefulShutdownServer.create(
                 app.listen(port, (err) => {
                     if (err) {
