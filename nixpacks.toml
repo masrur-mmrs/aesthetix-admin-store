@@ -3,3 +3,6 @@ nixPkgs = ['nodejs', 'yarn']
 
 [phases.install]
 cmds=['yarn install']
+
+[static]
+dir = ['build']
