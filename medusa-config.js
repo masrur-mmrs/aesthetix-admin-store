@@ -34,6 +34,8 @@ const DATABASE_URL =
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
+const BACKEND_URL = process.env.BACKEND_URL
+
 
 const WORKER_MODE = process.env.MEDUSA_WORKER_MODE
 
@@ -98,6 +100,8 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             autoRebuild: false,
+            outDir: "build",
+            backend: BACKEND_URL,
         }
     },
     {
