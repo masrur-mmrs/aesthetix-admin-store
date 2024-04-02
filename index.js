@@ -6,7 +6,6 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
 (async() => {
     async function start() {
         const app = express()
-        app.use(serveStatic('build'));
         const directory = process.cwd()
 
         try {
@@ -16,6 +15,8 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
             })
             const configModule = container.resolve("configModule")
             const port = process.env.PORT || configModule.projectConfig.port || 9000;
+
+            app.use(express.static(path.join(__dirname, 'build')));
 
             const server = GracefulShutdownServer.create(
                 app.listen(port, (err) => {
