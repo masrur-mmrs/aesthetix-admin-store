@@ -1,5 +1,4 @@
 const dotenv = require("dotenv");
-const { resolve } = require("path");
 
 let ENV_FILE_NAME = "";
 switch (process.env.NODE_ENV) {
@@ -35,9 +34,6 @@ const DATABASE_URL =
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
-const BACKEND_URL = process.env.BACKEND_URL
-
-const UPLOAD_DIR = process.env.UPLOAD_DIR
 
 const WORKER_MODE = process.env.MEDUSA_WORKER_MODE
 
@@ -103,7 +99,6 @@ const plugins = [
         options: {
             autoRebuild: false,
             path: "/app",
-            // serve: process.env.NODE_ENV === "development",
         }
     },
     {
@@ -120,7 +115,6 @@ const plugins = [
 const featureFlags = {
     product_categories: true,
     order_editing: true,
-    // tax_inclusive_pricing: true,
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["modules"]} */

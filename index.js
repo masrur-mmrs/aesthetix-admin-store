@@ -6,6 +6,7 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
 (async() => {
     async function start() {
         const app = express()
+        app.use(serveStatic('build'));
         const directory = process.cwd()
 
         try {
