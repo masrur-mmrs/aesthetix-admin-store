@@ -84,7 +84,7 @@ const plugins = [
                             "description",
                             "handle",
                             "thumbnail",
-                            "variants",
+                            // "variants",
                             // "variant_sku",
                             "options",
                             "collection_title",
