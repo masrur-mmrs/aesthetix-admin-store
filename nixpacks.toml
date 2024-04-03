@@ -5,4 +5,4 @@ nixPkgs = ['nodejs', 'yarn']
 cmds=['yarn install']
 
 [static]
-dir = ['build']
+dir = ['build', 'dist']
