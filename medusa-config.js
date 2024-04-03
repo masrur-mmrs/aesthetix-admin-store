@@ -51,8 +51,6 @@ const plugins = [
         options: {
             api_key: STRIPE_API_KEY,
             webhook_secret: STRIPE_WEBHOOK_SECRET,
-            backend: MEDUSA_URL,
-            outDir: "build",
         }
     },
     {
@@ -70,6 +68,8 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             autoRebuild: false,
+            backend: MEDUSA_URL,
+            outDir: "build",
         }
     },
     {
