@@ -35,6 +35,7 @@ const DATABASE_URL =
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const BACKEND_URL = process.env.BACKEND_URL
+const MEDUSA_URL = process.env.MEDUSA_ADMIN_BACKEND_URL
 
 
 const WORKER_MODE = process.env.MEDUSA_WORKER_MODE
@@ -50,6 +51,8 @@ const plugins = [
         options: {
             api_key: STRIPE_API_KEY,
             webhook_secret: STRIPE_WEBHOOK_SECRET,
+            backend: MEDUSA_URL,
+            outDir: "build",
         }
     },
     {
