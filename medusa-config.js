@@ -70,7 +70,6 @@ const plugins = [
             autoRebuild: true,
             serve: true,
             backend: MEDUSA_URL,
-            path: "/app",
             outDir: "build",
         }
     },
