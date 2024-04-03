@@ -67,7 +67,7 @@ const plugins = [
         resolve: "@medusajs/admin",
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
-            serve: false,
+            serve: true,
             outDir: 'build',
             backend: MEDUSA_URL,
         }
