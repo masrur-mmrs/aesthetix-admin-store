@@ -68,6 +68,7 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             serve: true,
+            autoRebuild: false,
             outDir: 'build',
             backend: MEDUSA_URL,
         }
