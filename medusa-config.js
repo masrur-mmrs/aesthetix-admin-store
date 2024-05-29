@@ -68,8 +68,8 @@ const plugins = [
         /** @type {import('@medusajs/admin').PluginOptions} */
         options: {
             autoRebuild: false,
+            outDir: 'public',
             backend: MEDUSA_URL,
-            outDir: "build",
         }
     },
     {
@@ -87,8 +87,8 @@ const plugins = [
                             "description",
                             "handle",
                             "thumbnail",
-                            // "variants",
-                            // "variant_sku",
+                            "variants",
+                            "variant_sku",
                             "options",
                             "collection_title",
                             "collection_handle",
