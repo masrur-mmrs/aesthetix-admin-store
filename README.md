@@ -68,11 +68,9 @@ This is an e-commerce website built with the help of <a href="https://docs.medus
 git clone https://github.com/masrur-mmrs/aesthetix-admin-store.git
 cd aesthetix-admin-store
 ```
-2. Install dependencies for both the frontend and backend:
+2. Install dependencies for the backend:
 ```bash
-cd frontend
-npm install
-cd ../backend
+cd backend
 npm install
 ```
 ## Configuration
